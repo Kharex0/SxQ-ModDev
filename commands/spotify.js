@@ -6,7 +6,7 @@ exports.run = function(client, message, args) {
   // First, we need to grab the user, if they are doing it for themselves or mentioning someone.
   let user = message.mentions.users.first() || message.author; // This checks if there is a mention, and takes the first one. Although, if there isn't a mention it uses the message author as a fallback.
   // Next, we need to verify that the specified user is listening to spotify.
-  if (/*user.presence.game !== null && user.presence.game.type === 'LISTENING' && */user.presence.game.name === 'Spotify' /*&& user.presence.activity.assets !== null*/) { // This checks all of these if statements, and if they are all true, it runs the following.
+  if (user.presence.activity !== null && user.presence.activity.type === 'LISTENING' && user.presence.activity.name === 'Spotify' && user.presence.activity.assets !== null) { // This checks all of these if statements, and if they are all true, it runs the following.
     
     // Variables - These are the variables we will be using in the embed
     let trackIMG = `https://i.scdn.co/image/${user.presence.activity.assets.largeImage.slice(8)}`; // This fetches a url image using the largeImage asset after slicing off the first 8 characters.
@@ -28,7 +28,7 @@ exports.run = function(client, message, args) {
 console.log(user.presence.activity);
 
     // Create embed object
-    const embed = new Discord.RichEmbed() // This will create the start of the embed, we will now add to it.
+    const embed = new Discord.MessageEmbed() // This will create the start of the embed, we will now add to it.
       .setAuthor('Spotify Parça Bilgisi', 'https://cdn.discordapp.com/emojis/408668371039682560.png') // This url will be in the description, it is setting the author & icon field for the embed.
       .setColor(0x1ED760) // This sets the color of the embed
       .setThumbnail(trackIMG) // This sets the thumbnail of the embed, using the variable from before.
@@ -50,7 +50,7 @@ console.log(user.presence.activity);
 };
 
 exports.conf = {
-  enabled: false,
+  enabled: true,
   guildOnly: true,
   aliases: [],
   permLevel: 0

@@ -3,7 +3,7 @@ exports.parseUser = (message, user) => {
   if (user.id === message.author.id) {
     return message.channel.send(`${message.author.username}? Hayır! Bunu kendine yapmana izin veremem, neden denedin ki?`);
   } else if (member) {
-    if (member.highestRole.position >= message.member.highestRole.position) return message.channel.send('Hedef üye, senin konumundan daha yüksek ya da eşit bir role sahip!\nÜzgünüm, ne demişler "Çayda dem, Discord\'ta kıdem!');
+    if (member.roles.highest >= message.member.roles.highest) return message.channel.send('Hedef üye, senin konumundan daha yüksek ya da eşit bir role sahip!\nÜzgünüm, ne demişler "Çayda dem, Discord\'ta kıdem!');
   }
   return user;
 };

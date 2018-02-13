@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
     // console.log(roller[i],i++);
     let game;
     if(!member.presence.game) game = 'None'; else game = member.presence.game.name;
-    let embed = new Discord.RichEmbed()
+    let embed = new Discord.MessageEmbed()
     .setAuthor(member.user.username, member.user.displayAvatarURL)
     .setDescription('Kullanıcı Bilgileri')
     .setColor('#4286f4')

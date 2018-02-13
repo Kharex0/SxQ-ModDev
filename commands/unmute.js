@@ -1,4 +1,4 @@
-const {RichEmbed} = require('discord.js');
+const {MessageEmbed} = require('discord.js');
 const {caseNumber} = require('../util/caseNumber.js');
 const {parseUser} = require('../util/parseUser.js');
 const settings = require('../settings.json');
@@ -18,7 +18,7 @@ exports.run = async (client, message, args) => {
 
   const reason = args.splice(1, args.length).join(' ') || `Moderator girişi beklenikor. ${settings.prefix}reason ${caseNum} <sebep>.`;
 
-  const embed = new RichEmbed()
+  const embed = new MessageEmbed()
      .setAuthor('UNMUTE', 'http://icons.iconarchive.com/icons/fatcow/farm-fresh/32/keyboard-add-icon.png')
     .setDescription(`**Kullanıcının Susturulması Kaldırıldı**`)
     .setColor(0x00AE86)
@@ -33,7 +33,7 @@ exports.run = async (client, message, args) => {
   if (!message.guild.member(user).roles.has(muteRole.id)) {
     message.channel.send(`${user.username} zaten susturulmamış? Kullanıcıyı zorla mı konuşturacağız?`);
   } else {
-    message.guild.member(user).removeRole(muteRole).then(() => {
+    message.guild.member(user).roles.remove(muteRole).then(() => {
       client.channels.get(modlog.id).send({embed}).catch(console.error);
     });
   }

@@ -1,4 +1,4 @@
-const {RichEmbed} = require('discord.js');
+const {MessageEmbed} = require('discord.js');
 const {caseNumber} = require('../util/caseNumber.js');
 const {parseUser} = require('../util/parseUser.js');
 const settings = require('../settings.json');
@@ -12,7 +12,7 @@ exports.run = async (client, message, args) => {
   message.guild.ban(user, 2);
 
   const reason = args.splice(1, args.length).join(' ') || `Moderator girişi beklenikor. ${settings.prefix}reason ${caseNum} <sebep>.`;
-  const embed = new RichEmbed()
+  const embed = new MessageEmbed()
     .setColor(0x00AE86)
     .setTimestamp()
     .setDescription(`**Eylem:** Ban\n**Hedef:** ${user.tag}, (${user.id})\n**Moderatör:** ${message.author.tag}\n**Sebep:** ${reason}`)

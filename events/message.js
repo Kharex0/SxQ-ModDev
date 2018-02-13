@@ -18,7 +18,7 @@ module.exports = message => {
   if (cmd) { 
     if (perms < cmd.conf.permLevel) return;
     if (!message.guild && cmd.conf.guildOnly) return message.channel.send('Bu komut özel mesaj yoluyla kullanılamaz. Lütfen bu komutu bir serverda çalıştırın.');
-    if (!cmd.conf.enabled) return message.channel.send('Bu komut geçici olarak kullanılamamaktadır.');
+    //if (cmd.conf.enabled = false) return message.channel.send('Bu komut geçici olarak kullanılamamaktadır.');
     cmd.run(client, message, args, perms);
   }
 };

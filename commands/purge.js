@@ -20,7 +20,7 @@ exports.run = async (client, message, args, perms) => {
   await message.delete();
   if (messagecount < 2) return message.channel.send(`Lütfen 2-99 arasında bir sayı girin. \nKullanım: ${prefix}purge <miktar>`);
 
-  message.channel.fetchMessages({
+  message.channel.messages.fetch({
     limit: messagecount
   }).then(messages =>
     message.channel.bulkDelete(messages));

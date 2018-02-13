@@ -54,11 +54,11 @@ exports.run = async (client, message, args) => {
   if (!message.guild.member(client.user).hasPermission('MANAGE_ROLES_OR_PERMISSIONS')) return message.reply('Rolleri ve izinleri değiştirme yetkisine sahip değilim.').catch(console.error);
 
   if (message.guild.member(toMute).roles.has(muteRole.id)) {
-    message.guild.member(toMute).removeRole(muteRole).then(() => {
+    message.guild.member(toMute).roles.remove(muteRole).then(() => {
       client.channels.get(modlog.id).send({embed}).catch(console.error);
     });
   } else {
-    message.guild.member(toMute).addRole(muteRole, reason).then(() => {
+    message.guild.member(toMute).roles.add(muteRole, args.splice(1, args.length).join(' ')).then(() => {
       client.channels.get(modlog.id).send({embed}).catch(console.error);
     });
   }

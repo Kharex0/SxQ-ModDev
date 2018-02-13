@@ -19,7 +19,7 @@ exports.run = async (client, message, args) => {
   const caseNumber = args.shift();
   const newReason = args.join(' ') + `\n ${moment().format('DD-MM-YYYY HH:mm:ss')}`;
 
-  await modlog.fetchMessages({limit:100}).then((messages) => {
+  await modlog.messages.fetch({limit:100}).then((messages) => {
     const caseLog = messages.filter(m => m.author.id === client.user.id &&
       m.embeds[0] &&
       m.embeds[0].type === 'rich' &&

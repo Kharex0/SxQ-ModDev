@@ -1,4 +1,4 @@
-const {RichEmbed} = require('discord.js'); // eslint-disable-line no-unused-vars
+const {MessageEmbed} = require('discord.js'); // eslint-disable-line no-unused-vars
 const {caseNumber} = require('../util/caseNumber.js');
 const {parseUser} = require('../util/parseUser.js');
 const prefix = require('../settings.json').prefix;
@@ -12,7 +12,7 @@ if (!modlog) return message.reply('**"mod-log"** kanalını bulamadım.');
 if (message.mentions.users.size < 1) return message.reply('Birisini uyarmak için ondan bahsetmelisin.').catch(console.error);
 
 const reason = args.splice(1, args.length).join(' ') || `Moderatör girişi bekleniyor. ${prefix}reason ${caseNum} <sebep>.`;
-const embed = new RichEmbed()
+const embed = new MessageEmbed()
     .setColor(0x00AE86)
     .setTimestamp()
     .setDescription(`**Eylem:** Uyarı\n**Hedef:** ${user.tag}\n**Moderatör:** ${message.author.tag}\n**Sebep:** ${reason}`)
