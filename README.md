@@ -41,7 +41,7 @@ Videolu anlatımını [YouTube](https://www.youtube.com/playlist?list=PLu_0x99a4
 
 ## Lisans
 
-Bu proje MIT Lisansı ile lisanslanmıştır. - Ayrıntılar için [LICENSE.md](LICENSEe.md) dosyasına bakın.
+Bu proje MIT Lisansı ile lisanslanmıştır. - Ayrıntılar için [LICENSE.md](LICENSE) dosyasına bakın.
 
 ## Teşekkürler
 
